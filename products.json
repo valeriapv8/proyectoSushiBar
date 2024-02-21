@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Uramaki Philadelphia nuevo",
+    "image": "assets/img/1%20(15).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 35
+  },
+  {
+    "id": 2,
+    "name": "Uramaki ebi",
+    "image": "assets/img/1%20(1).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 33
+  },
+  {
+    "id": 3,
+    "name": "Uramaki California",
+    "image": "assets/img/1%20(2).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 38
+  }
+]
