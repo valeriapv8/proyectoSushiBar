@@ -26,9 +26,9 @@ function cargarProductosCarrito() {
             const div = document.createElement("div");
             div.classList.add("carrito-producto");
             div.innerHTML = `
-                <img class="carrito-producto-imagen" src="${product.image}" alt="${product.name}">
+                <img class="carrito-producto-imagen" src="${product.image}" alt="${product.name}" height="80px">
                 <div class="carrito-producto-titulo">
-                    <small>Título</small>
+                    <small>Producto</small>
                     <h3>${product.name}</h3>
                 </div>
                 <!-- Reemplaza esta parte en el carrito-producto-cantidad -->
@@ -39,11 +39,11 @@ function cargarProductosCarrito() {
 
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
-                    <p>$${product.price}</p>
+                    <p>BOB ${product.price}</p>
                 </div>
                 <div class="carrito-producto-subtotal">
                     <small>Subtotal</small>
-                    <p>$${product.price * product.cantidad}</p>
+                    <p>BOB ${product.price * product.cantidad}</p>
                 </div>
                 <button class="carrito-producto-eliminar" id="${product.id}"><i class="bi bi-trash-fill"></i></button>
             `;
@@ -147,6 +147,8 @@ function actualizarTotal() {
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
 
+    enviarPedidoPorWhatsApp(productosEnCarrito);
+
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
@@ -155,4 +157,12 @@ function comprarCarrito() {
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 
+}
+
+function enviarPedidoPorWhatsApp(pedido) {
+    const mensaje = encodeURIComponent(
+        `¡Hola! Me gustaría ordenar:\n` +
+        pedido.map(producto => `${producto.cantidad} ${producto.name}`).join('\n')        
+    );
+    window.open(`https://wa.me/59172170272/?text=${mensaje}`, '_blank');
 }
