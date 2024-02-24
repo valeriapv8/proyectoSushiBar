@@ -16,38 +16,107 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
 
 </head>
 
+<style>
+    .gallary {
+        margin: 0;
+    }
+
+    .gallary .gallary-item {
+        padding: 0;
+        border: 1px solid #343a40;
+    }
+
+    .gallary .gallary-item .gallary-img {
+        width: 100%;
+    }
+
+    .gallary .gallary-item .gallary-overlay {
+        background: rgba(52, 58, 64, 0.7);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: all 0.2s linear 0s;
+        transition: all 0.2s linear 0s;
+    }
+
+    .gallary .gallary-item .gallary-overlay .gallary-icon {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .gallary .gallary-item:hover .gallary-overlay {
+        visibility: visible;
+        opacity: 1;
+    }
+    .has-bg-overlay:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('./assets/img/sushi/sushii (4).jpg') no-repeat center center fixed;
+        background-size: cover;
+        z-index: -1;
+        opacity: .3;
+    }
+
+    .has-bg-overlay:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #343a40;
+        z-index: -2;
+    }
+    .custom-carousel-height {
+        height: 700px; /* ajusta la altura según tus necesidades */
+        overflow: hidden;
+    }
+
+</style>
+
+
 <body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:sushibar@gmail.com">sushibar@gmail.com</a>
-                    <i class="fa fa-phone mx-2"></i>cel.
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">+591 73564739</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
 
+<!--fixed-top" data-spy="affix" data-offset-top="10"-->
 
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark shadow" >
         <div class="container d-flex justify-content-between align-items-center">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <a class="navbar-brand text-danger logo h1 align-self-center" href="index.html">
-                <img class="img-fluid" src="./assets/img/LogoSushiBarColor.png" alt="" width="220" height="100">
+                <img class="img-fluid" src="./assets/img/LogoSushiBarBlanco.png" alt="" width="220" height="100">
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,18 +125,18 @@
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto ">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
+                            <a class="h3 nav-link text-white" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Acerca de</a>
+                            <a class="h3 nav-link text-white" href="about.html">Acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Tienda</a>
+                            <a class="h3 nav-link text-white" href="shop.html">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contactanos</a>
+                            <a class="h3 nav-link text-white" href="contact.html">Contactanos</a>
                         </li>
                     </ul>
                 </div>
@@ -76,26 +145,27 @@
                         <div class="input-group">
                             <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
                             <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
+                                <i class="fa fa-fw fa-search text-white"></i>
                             </div>
                         </div>
                     </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                        <i class="fa fa-fw fa-search text-white mr-2"></i>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <i class="fa fa-fw fa-cart-arrow-down text-white mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <i class="fa fa-fw fa-user text-white mr-3"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">10</span>
                     </a>
                 </div>
             </div>
 
         </div>
     </nav>
+
     <!-- Close Header -->
 
     <!-- Modal -->
@@ -118,7 +188,7 @@
 
 
     <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="template-mo-zay-hero-carousel" class="carousel slide custom-carousel-height" data-bs-ride="carousel">
         <ol class="carousel-indicators">
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active bg-danger"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1" class="bg-danger"></li>
@@ -134,8 +204,8 @@
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-danger"><b> Sushi a tu gusto, </b> ¡Personalízalo! </h1>
-                                <h3 class="h2"> Saborea la tradición japonesa con nuestro sushi artesanal. </h3>
-                                <p>
+                                <h3 class="h2 text-white"> Saborea la tradición japonesa con nuestro sushi artesanal. </h3>
+                                <p class="text-white">
                                     Disfruta del mejor sushi de la ciudad, elaborado con ingredientes frescos y de la más alta calidad. Te ofrecemos una amplia variedad de piezas para que encuentres tu favorita.
                                 </p>
                             </div>
@@ -152,8 +222,8 @@
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
                                 <h1 class="h1 text-danger"><b> ¡Explosión de sabor! </b></h1>
-                                <h3 class="h2"> Convierte tu sushi en una experiencia culinaria sin igual con nuestras salsas gourmet. </h3>
-                                <p>
+                                <h3 class="h2 text-white"> Convierte tu sushi en una experiencia culinaria sin igual con nuestras salsas gourmet. </h3>
+                                <p class="text-white">
                                     Dale un toque único a tu sushi con nuestras deliciosas salsas. Elige entre una amplia variedad de sabores: salsa de soja, teriyaki, mayonesa picante, sriracha, anguila, y muchas más. ¡Atrévete a probarlas todas!
                                 </p>
                             </div>
@@ -165,13 +235,13 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/vasoDeGaseosa.png" alt="">
+                            <img class="img-fluid" src="./assets/img/vasoDeGaseosa.png" alt="" width="450" height="450">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
                                 <h1 class="h1 text-danger"><b> Gaseosas,  </b> ¡el complemento perfecto para tu sushi! </h1>
-                                <h3 class="h2">  ¡Hidrátate con sabor! Prueba nuestras deliciosas gaseosas. </h3>
-                                <p>
+                                <h3 class="h2 text-white">  ¡Hidrátate con sabor! Prueba nuestras deliciosas gaseosas. </h3>
+                                <p class="text-white">
                                     Disfruta de una experiencia refrescante y deliciosa con nuestras gaseosas. Tenemos una amplia variedad de sabores para todos los gustos: cola, naranja, limón, manzana, fresa, y muchas más. ¡Encuentra tu favorita!
 
                                 </p>
@@ -192,6 +262,12 @@
 
 
     <!-- Start Categories of The Month -->
+    <br>
+    <br>
+    <br>
+    <br>
+
+
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
@@ -227,9 +303,9 @@
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Nuestros Combos</h1>
-                    <p>
-                        Descubre la fusión perfecta de sabores con nuestros exclusivos combos: Deléitate con cada bocado y haz de tu experiencia culinaria algo extraordinario.
+                    <h1 class="h1 text-white">Nuestros Combos</h1>
+                    <p class="text-white">
+                        Descubre la fusión perfecta de sabores con nuestros exclusivos combos:
                     </p>
                 </div>
             </div>
@@ -241,13 +317,6 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
                                 <li class="text-muted text-right">BOB 100</li>
                             </ul>
                             <a href="shop-single.html" class="h2 text-decoration-none text-danger">Ututuysh</a>
@@ -265,13 +334,6 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
                                 <li class="text-muted text-right">BOB 60</li>
                             </ul>
                             <a href="shop-single.html" class="h2 text-decoration-none text-danger">Kashaki Hero</a>
@@ -289,13 +351,6 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
                                 <li class="text-muted text-right">BOB 120</li>
                             </ul>
                             <a href=" shop-single.html" class="h2 text-decoration-none text-danger">Montonasho</a>
@@ -310,6 +365,226 @@
         </div>
     </section>
     <!-- End Featured Product -->
+
+
+    <!-- GALERIA SECCION -->
+
+    <section>
+        <!--  gallary Section  -->
+        <!-- <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+            <h2 class="section-title">OUR MENU</h2>
+
+            src="./assets/img/comboSushi2.jpg"
+
+        </div> -->
+        <div class="gallary row" id="gallary">
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(3).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(6).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(10).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(50).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(11).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(53).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(21).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(48).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(26).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(28).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(55).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                <img src="./assets/img/sushi/sushii%20(45).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+                <a href="#" class="gallary-overlay">
+                    <i class="gallary-icon ti-plus"></i>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Acerca de -->
+
+    <section class="bg-danger py-5 d-flex">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-8 text-white">
+                    <h1> Acerca de Nosotros </h1>
+                    <p>
+                        Nació de la pasión de proyectoSushi por la cultura y la gastronomía japonesa. Nos hemos dedicado a ofrecer a nuestros clientes una experiencia culinaria única, basada en la elaboración artesanal de sushi con ingredientes frescos y de la más alta calidad.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="assets/img/tl.webp" alt="About Hero">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Banner -->
+
+    <!-- Start Section -->
+    <section class="container py-5 container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" >
+        <div class="row text-center pt-5 pb-3" >
+            <div class="col-lg-6 m-auto ">
+                <h1 class="h1 text-dark">Nuestros Servicios</h1>
+                <p class="text-dark">
+                    Tu sushi favorito, a tu alcance:
+                </p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow ">
+                    <div class="h1 text-danger text-center"><i class="fa fa-truck fa-lg "></i></div>
+                    <h2 class="h5 mt-4 text-center"> Servicio de Delivery </h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-danger text-center"><i class="fas fa-exchange-alt"></i></div>
+                    <h2 class="h5 mt-4 text-center"> Respuesta Inmediata </h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-danger text-center"><i class="fa fa-percent"></i></div>
+                    <h2 class="h5 mt-4 text-center"> Promociones </h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-danger text-center"><i class="fa fa-user"></i></div>
+                    <h2 class="h5 mt-4 text-center"> 12 Horas al Día </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End ACERCA DE Section -->
+
+
+
+    <!-- CONTACTANOS Section -->
+
+    <section class="container-fluid bg-light py-5" >
+
+        <!-- Start Content Page -->
+        <div class="container-fluid bg-light py-5">
+            <div class="col-md-6 m-auto text-center">
+                <h1 class="h1 text-white">Encuentranos aquí</h1>
+                <p class="text-white">
+                    Tu sushi favorito, a tu alcance:
+                </p>
+            </div>
+        </div>
+
+        <!-- Start Map -->
+        <div id="mapid" style="width: 100%; height: 300px;"></div>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script>
+            var mymap = L.map('mapid').setView([-17.782701, -63.182127], 16);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+            }).addTo(mymap);
+
+            L.marker([-17.782701, -63.182127]).addTo(mymap)
+                .bindPopup("<b>SUSHIBAR </b> esta <br />Localizado en Santa Cruz, Bolivia.").openPopup();
+
+            mymap.scrollWheelZoom.disable();
+            mymap.touchZoom.disable();
+        </script>
+
+        <!-- Ena Map -->
+
+        <!-- Start Contact -->
+        <div class="container py-5">
+            <div class="row py-5">
+                <form class="col-md-9 m-auto" method="post" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3 text-white">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nombre Completo">
+                        </div>
+                        <div class="form-group col-md-6 mb-3 text-white">
+                            <label for="email">Correo</label>
+                            <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo Electronico">
+                        </div>
+                    </div>
+                    <div class="mb-3 text-white" >
+                        <label for="subject">Asunto</label>
+                        <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Asunto">
+                    </div>
+                    <div class="mb-3 text-white">
+                        <label for="message">Mensaje</label>
+                        <textarea class="form-control mt-1" id="message" name="message" placeholder="Mensaje" rows="3"></textarea>
+                    </div>
+                    <div class="row text-white">
+                        <div class="col text-end mt-2">
+                            <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Contact -->
+    </section>
 
 
     <!-- Start Footer -->
@@ -378,13 +653,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
+                <!--<div class="col-auto text-white">
                     <label class="sr-only" for="subscribeEmail">Correo Electronico</label>
                     <div class="input-group mb-2">
                         <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Correo Electronico">
                         <div class="input-group-text btn-danger text-light">Suscribete</div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -410,6 +685,10 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <!-- End Script -->
 </body>
 
