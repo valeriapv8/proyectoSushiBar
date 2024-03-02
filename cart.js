@@ -183,3 +183,25 @@ function comprarCarrito() {
 
 }
 cargarProductosCarrito();
+botonComprar.addEventListener("click", comprarCarrito);
+function comprarCarrito() {
+
+    enviarPedidoPorWhatsApp(productosEnCarrito);
+
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+    contenedorCarritoComprado.classList.remove("disabled");
+
+}
+
+function enviarPedidoPorWhatsApp(pedido) {
+    const mensaje = encodeURIComponent(
+        `¡Hola! Me gustaría ordenar:\n` +
+        pedido.map(producto => `${producto.cantidad} ${producto.name}`).join('\n')
+    );
+    window.open(`https://wa.me/59172170272/?text=${mensaje}`, '_blank');
+}
