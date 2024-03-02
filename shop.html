@@ -195,44 +195,38 @@
 
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
-                        // Obtén una referencia al contenedor de productos en el DOM
                         const productContainer = document.getElementById('product-container');
 
-                        // Realiza una solicitud para cargar el archivo JSON de productos
                         fetch('products.json')
                             .then(response => response.json())
                             .then(products => {
-                                // Recorre los productos y crea dinámicamente los elementos HTML
                                 products.forEach(product => {
-                                    // Crea un nuevo div para cada producto
                                     const productDiv = document.createElement('div');
                                     productDiv.classList.add('col-md-4');
                                     productDiv.innerHTML = `
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="${product.image}">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2 addToCart" data-id="${product.id}" data-name="${product.name}" data-image="${product.image}" data-description="${product.description}" data-price="${product.price}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">${product.name}</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>${product.description}</li>
-                                </ul>
-                                <p class="text-center mb-0">BOB ${product.price}</p>
-                            </div>
-                        </div>
-                    `;
+                                        <div class="card mb-4 product-wap rounded-0">
+                                            <div class="card rounded-0">
+                                                <img class="card-img rounded-0 img-fluid" src="${product.image}">
+                                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                                    <ul class="list-unstyled">
+                                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                                                        <li><a class="btn btn-success text-white mt-2 addToCart" data-id="${product.id}" data-name="${product.name}" data-image="${product.image}" data-description="${product.description}" data-price="${product.price}" data-quantity="${product.quantity}"><i class="fas fa-cart-plus"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="shop-single.html" class="h3 text-decoration-none">${product.name}</a>
+                                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                                    <li>${product.description}</li>
+                                                </ul>
+                                                <p class="text-center mb-0">BOB ${product.price}</p>
+                                            </div>
+                                        </div>
+                                    `;
 
-                                    // Agrega el producto al contenedor de productos
                                     productContainer.appendChild(productDiv);
                                 });
 
-                                // Agrega un evento de clic a los botones "addToCart"
                                 const addToCartButtons = document.querySelectorAll('.addToCart');
                                 addToCartButtons.forEach(button => {
                                     button.addEventListener('click', addToCart);
@@ -244,43 +238,48 @@
                                     const productImage = event.currentTarget.dataset.image;
                                     const productDescription = event.currentTarget.dataset.description;
                                     const productPrice = event.currentTarget.dataset.price;
+                                    const productQuantity = event.currentTarget.dataset.quantity;
 
-                                    // Ajusta la lógica para agregar productos al carrito
-                                    // ...
-
-                                    // Ejemplo: Agrega el producto al localStorage
                                     const productToAdd = {
                                         id: productId,
                                         name: productName,
                                         image: productImage,
                                         description: productDescription,
-                                        price: parseFloat(productPrice), // Convierte a número
-                                        quantity: 1 // Inicializa la cantidad en 1
+                                        price: parseFloat(productPrice),
+                                        cantidad: parseInt(productQuantity)
                                     };
 
-                                    // Obtiene los productos existentes en el carrito del localStorage
                                     let cartProducts = JSON.parse(localStorage.getItem('productos-en-carrito')) || [];
 
-                                    // Verifica si el producto ya está en el carrito
                                     const existingProductIndex = cartProducts.findIndex(product => product.id === productId);
 
                                     if (existingProductIndex !== -1) {
-                                        // Si el producto ya está en el carrito, actualiza la cantidad
-                                        cartProducts[existingProductIndex].quantity += 1;
+                                        cartProducts[existingProductIndex].cantidad += 1;
                                     } else {
-                                        // Si el producto no está en el carrito, agrégalo
                                         cartProducts.push(productToAdd);
                                     }
 
-                                    // Guarda los productos actualizados en el localStorage
                                     localStorage.setItem('productos-en-carrito', JSON.stringify(cartProducts));
+
+                                    // Actualiza el número de productos en el carrito en el ícono
+                                    actualizarNumeroCarrito();
 
                                     // Puedes agregar aquí lógica adicional, como mostrar un mensaje de éxito
                                     // ...
 
-                                    // Recarga la página para actualizar la interfaz del carrito
-                                    location.reload();
+                                    // No es necesario recargar la página, ya que estamos utilizando AJAX para cargar productos
                                 }
+
+                                function actualizarNumeroCarrito() {
+                                    const cartIcon = document.querySelector('.nav-icon .badge');
+                                    const cartProducts = JSON.parse(localStorage.getItem('productos-en-carrito')) || [];
+                                    const totalQuantity = cartProducts.reduce((total, product) => total + product.cantidad, 0);
+
+                                    cartIcon.textContent = totalQuantity;
+                                }
+
+                                // Carga inicial del número de productos en el carrito
+                                actualizarNumeroCarrito();
                             })
                             .catch(error => console.error('Error al cargar el archivo JSON:', error));
                     });

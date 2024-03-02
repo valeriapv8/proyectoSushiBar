@@ -1,7 +1,6 @@
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
-productosEnCarrito = JSON.parse(productosEnCarrito);
+productosEnCarrito = JSON.parse(productosEnCarrito) || [];const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 
-const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
@@ -10,9 +9,24 @@ const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
-
 function cargarProductosCarrito() {
-    if (productosEnCarrito && productosEnCarrito.length > 0) {
+    if (productosEnCarrito.length > 0) {
+        const btnIncrementar = document.querySelectorAll('.btn-incrementar');
+        const btnDecrementar = document.querySelectorAll('.btn-decrementar');
+
+        btnIncrementar.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idProducto = btn.dataset.id;
+                actualizarCantidad(idProducto, 1);
+            });
+        });
+
+        btnDecrementar.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idProducto = btn.dataset.id;
+                actualizarCantidad(idProducto, -1);
+            });
+        });
 
         contenedorCarritoVacio.classList.add("disabled");
         contenedorCarritoProductos.classList.remove("disabled");
@@ -32,9 +46,11 @@ function cargarProductosCarrito() {
                     <h3>${product.name}</h3>
                 </div>
                 <!-- Reemplaza esta parte en el carrito-producto-cantidad -->
-                <div class="carrito-producto-cantidad">
+               <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
-                    <input type="number" min="1" value="${product.cantidad}" data-id="${product.id}" class="input-cantidad">
+                    <button class="btn-incrementar" data-id="${product.id}">+</button>
+                    <span class="cantidad">${product.cantidad}</span>
+                    <button class="btn-decrementar" data-id="${product.id}">-</button>
                 </div>
 
                 <div class="carrito-producto-precio">
@@ -49,11 +65,22 @@ function cargarProductosCarrito() {
             `;
 
             contenedorCarritoProductos.append(div);
+
+            const btnIncrementar = div.querySelector('.btn-incrementar');
+            const btnDecrementar = div.querySelector('.btn-decrementar');
+
+            btnIncrementar.addEventListener('click', () => actualizarCantidad(product.id, product.cantidad + 1));
+            btnDecrementar.addEventListener('click', () => {
+                if (product.cantidad > 1) {
+                    actualizarCantidad(product.id, product.cantidad - 1);
+                }
+            });
         })
         const inputCantidades = document.querySelectorAll('.input-cantidad');
         inputCantidades.forEach(input => {
-            input.addEventListener('change', actualizarCantidad);
+            input.addEventListener('input', actualizarCantidad);
         });
+
         actualizarBotonesEliminar();
         actualizarTotal();
 
@@ -65,10 +92,7 @@ function cargarProductosCarrito() {
     }
 
 }
-function actualizarCantidad(event) {
-    const idProducto = event.target.dataset.id;
-    const nuevaCantidad = parseInt(event.target.value);
-
+function actualizarCantidad(idProducto, nuevaCantidad) {
     const producto = productosEnCarrito.find(p => p.id === idProducto);
     if (producto) {
         producto.cantidad = nuevaCantidad;
@@ -76,6 +100,8 @@ function actualizarCantidad(event) {
         cargarProductosCarrito();
     }
 }
+
+
 
 cargarProductosCarrito();
 
@@ -156,3 +182,4 @@ function comprarCarrito() {
     contenedorCarritoComprado.classList.remove("disabled");
 
 }
+cargarProductosCarrito();
