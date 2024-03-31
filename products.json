@@ -1,0 +1,141 @@
+[
+  {
+    "id": 1,
+    "name": "Uramaki Philadelphia",
+    "image": "assets/img/1%20(15).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "name": "Uramaki ebi",
+    "image": "assets/img/1%20(1).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 33,
+    "quantity": 1
+  },
+  {
+    "id": 3,
+    "name": "Uramaki California",
+    "image": "assets/img/1%20(2).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 38,
+    "quantity": 1
+  },
+  {
+    "id": 4,
+    "name": "Futomaki Philadelphia",
+    "image": "assets/img/1%20(3).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },
+  {
+    "id": 5,
+    "name": "Futomaki ebi",
+    "image": "assets/img/1%20(4).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },
+  {
+    "id": 6,
+    "name": "Fotomaki dos mariscos",
+    "image": "assets/img/1%20(16).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 44,
+    "quantity": 1
+  },
+  {
+    "id": 7,
+    "name": "Hosomaki de salmón",
+    "image": "assets/img/1%20(14).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 50,
+    "quantity": 1
+  },
+  {
+    "id": 8,
+    "name": "Nigiri de salmón",
+    "image": "assets/img/1%20(9).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },
+  {
+    "id": 9,
+    "name": "Temaki ebi",
+    "image": "assets/img/1%20(11).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },{
+  "id": 10,
+  "name": "Uramaki Philadelpia",
+  "image": "assets/img/1%20(15).jpg",
+  "description": "(5 unidades deliciosas)",
+  "price": 34,
+  "quantity": 1
+},{
+  "id": 11,
+  "name": "Uramaki California",
+  "image": "assets/img/1%20(2).jpg",
+  "description": "(5 unidades deliciosas)",
+  "price": 34,
+  "quantity": 1
+},
+  {
+    "id": 12,
+    "name": "Futomaki Philadelphia",
+    "image": "assets/img/1%20(3).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },{
+  "id": 13,
+  "name": "Futomaki ebi",
+  "image": "assets/img/1%20(4).jpg",
+  "description": "(5 unidades deliciosas)",
+  "price": 34,
+  "quantity": 1
+},
+  {
+    "id": 14,
+    "name": "Futomaki dos mariscos",
+    "image": "assets/img/1%20(16).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 44,
+    "quantity": 1
+  },{
+  "id": 15,
+  "name": "Hosomaki de salmón",
+  "image": "assets/img/1%20(14).jpg",
+  "description": "(5 unidades deliciosas)",
+  "price": 50,
+  "quantity": 1
+},{
+  "id": 16,
+  "name": "Nigiri de salmón",
+  "image": "assets/img/1%20(6).jpg",
+  "description": "(5 unidades deliciosas)",
+  "price": 34,
+  "quantity": 1
+},
+  {
+    "id": 17,
+    "name": "Nigiri de salmón",
+    "image": "assets/img/1%20(9).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  },
+  {
+    "id": 18,
+    "name": "Temaki ebi",
+    "image": "assets/img/1%20(11).jpg",
+    "description": "(5 unidades deliciosas)",
+    "price": 34,
+    "quantity": 1
+  }
+]
