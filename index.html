@@ -14,12 +14,15 @@
     <link rel="stylesheet" href="assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Load map styles -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
 
 
 </head>
@@ -74,6 +77,7 @@
         visibility: visible;
         opacity: 1;
     }
+
     .has-bg-overlay:before {
         content: '';
         position: absolute;
@@ -97,6 +101,7 @@
         background: #343a40;
         z-index: -2;
     }
+
     .custom-carousel-height {
         height: 800px; /* ajusta la altura según tus necesidades */
         overflow: hidden;
@@ -107,589 +112,612 @@
 
 <body>
 
-<!--fixed-top" data-spy="affix" data-offset-top="10"-->
+<!-- Barra de Navegacion -->
 
-    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark shadow" >
-        <div class="container d-flex justify-content-between align-items-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav id="Home" class="custom-navbar navbar navbar-expand-lg navbar-dark shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <a class="navbar-brand text-danger logo h1 align-self-center" href="index.html">
-                <img class="img-fluid" src="./assets/img/LogoSushiBarBlanco.png" alt="" width="220" height="100">
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto ">
-                        <li class="nav-item">
-                            <a class="h3 nav-link text-white" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="h3 nav-link text-white" href="about.html">Acerca de</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="h3 nav-link text-white" href="shop.html">Tienda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="h3 nav-link text-white" href="contact.html">Contactanos</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search text-white"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-white mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-white mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-white mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">10</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-    <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-danger text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide custom-carousel-height" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active bg-danger"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1" class="bg-danger"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2" class="bg-danger"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/Banner1.png"  alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-danger"><b> Sushi a tu gusto, </b> ¡Personalízalo! </h1>
-                                <h3 class="h2 text-white"> Saborea la tradición japonesa con nuestro sushi artesanal. </h3>
-                                <p class="text-white">
-                                    Disfruta del mejor sushi de la ciudad, elaborado con ingredientes frescos y de la más alta calidad. Te ofrecemos una amplia variedad de piezas para que encuentres tu favorita.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/salsaSoja.webp" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1 text-danger"><b> ¡Explosión de sabor! </b></h1>
-                                <h3 class="h2 text-white"> Convierte tu sushi en una experiencia culinaria sin igual con nuestras salsas gourmet. </h3>
-                                <p class="text-white">
-                                    Dale un toque único a tu sushi con nuestras deliciosas salsas. Elige entre una amplia variedad de sabores: salsa de soja, teriyaki, mayonesa picante, sriracha, anguila, y muchas más. ¡Atrévete a probarlas todas!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/vasoDeGaseosa.png" alt="" width="450" height="450">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1 text-danger"><b> Gaseosas,  </b> ¡el complemento perfecto para tu sushi! </h1>
-                                <h3 class="h2 text-white">  ¡Hidrátate con sabor! Prueba nuestras deliciosas gaseosas. </h3>
-                                <p class="text-white">
-                                    Disfruta de una experiencia refrescante y deliciosa con nuestras gaseosas. Tenemos una amplia variedad de sabores para todos los gustos: cola, naranja, limón, manzana, fresa, y muchas más. ¡Encuentra tu favorita!
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left "></i>
+        <a class="navbar-brand text-danger logo h1 align-self-center" href="index.html">
+            <img class="img-fluid" src="./assets/img/LogoSushiBarBlanco.png" alt="" width="220" height="100">
         </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+             id="templatemo_main_nav">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto ">
+                    <li class="nav-item">
+                        <a class="h3 nav-link text-white" href="#Home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="h3 nav-link text-white" href="#about us">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="h3 nav-link text-white" href="shop.html">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="h3 nav-link text-white" href="#Contactanos">Contactanos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar align-self-center d-flex">
+                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                        <div class="input-group-text">
+                            <i class="fa fa-fw fa-search text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                   data-bs-target="#templatemo_search">
+                    <i class="fa fa-fw fa-search text-white mr-2"></i>
+                </a>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-cart-arrow-down text-white mr-1"></i>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-white">7</span>
+                </a>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-user text-white mr-3"></i>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-white">10</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-    <!-- End Banner Hero -->
+</nav>
 
+<!-- Close Header -->
 
-    <!-- Start Categories of The Month -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Realiza Tu Pedido</h1>
-                <p>
-                    Tu Satisfacción en Cada Elección: Haz Tu Pedido y Disfruta de una Experiencia Culinaria Inigualable.
-                </p>
-            </div>
+<!-- Busqueda -->
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="w-100 pt-1 mb-5 text-right">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/sushi.jpg" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Sushi</h5>
-                <p class="text-center"><a class="btn btn-danger" href="shop.html" >Ordenar</a></p>
+        <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                <button type="submit" class="input-group-text bg-danger text-light">
+                    <i class="fa fa-fw fa-search text-white"></i>
+                </button>
             </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/topping5.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Toppings</h2>
-                <p class="text-center"><a class="btn btn-danger" href="shop.html" >Ordenar</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/gaseosas.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Gaseosas</h2>
-                <p class="text-center"><a class="btn btn-danger" href="shop.html" >Ordenar</a></p>
-            </div>
-        </div>
-    </section>
-    <!-- End Categories of The Month -->
+        </form>
+    </div>
+</div>
 
 
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1 text-white">Nuestros Combos</h1>
-                    <p class="text-white">
-                        Descubre la fusión perfecta de sabores con nuestros exclusivos combos:
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/comboSushi1.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li class="text-muted text-right">BOB 100</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-danger">Ututuysh</a>
-                            <p class="card-text">
-                                Entra a la familia este nuevo combo de 40 bocados x 6 sabores de California tempura, Salmón spicy, Langostino crispi, Camarón tamago, Kanikama Lulo y Salmón lion + 4 bastones de kanikama crunch.
-                            </p>
-                            <p class="text-muted">Ordenados (24)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/comboSushi2.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li class="text-muted text-right">BOB 60</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-danger">Kashaki Hero</a>
-                            <p class="card-text">
-                                Ideal para una linda cena este combo de 20 bocados de sushi x 4 sabores diferentes: California, Alaska Kanikama, Maduro Mozzarella y New York, + entrada de dos deditos criollos.
-                            </p>
-                            <p class="text-muted">Ordenados (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/comboSushi3.jpeg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li class="text-muted text-right">BOB 120</li>
-                            </ul>
-                            <a href=" shop-single.html" class="h2 text-decoration-none text-danger">Montonasho</a>
-                            <p class="card-text">
-                                Disfruta de 50 bocados de sushi x 5 sabores diferentes: Uramaki California, Salmón Kakiage, mango chips, salmon skin, camarón primavera + 2 Coca-Cola o Sprite de 1.5L + Helado.
-                            </p>
-                            <p class="text-muted">Ordenados (74)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Featured Product -->
-
-
-    <!-- GALERIA SECCION -->
-
-    <section>
-        <!--  gallary Section  -->
-        <!-- <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
-            <h2 class="section-title">OUR MENU</h2>
-
-            src="./assets/img/comboSushi2.jpg"
-
-        </div> -->
-        <div class="gallary row" id="gallary">
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(3).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(6).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(10).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(50).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(11).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(53).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(21).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(48).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(26).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(28).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(55).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-                <img src="./assets/img/sushi/sushii%20(45).jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-                <a href="#" class="gallary-overlay">
-                    <i class="gallary-icon ti-plus"></i>
-                </a>
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- Acerca de -->
-
-    <section class="bg-danger py-5 d-flex">
-        <div class="container">
-            <div class="row align-items-center py-5">
-                <div class="col-md-8 text-white">
-                    <h1> Acerca de Nosotros </h1>
-                    <p>
-                        Nació de la pasión de proyectoSushi por la cultura y la gastronomía japonesa. Nos hemos dedicado a ofrecer a nuestros clientes una experiencia culinaria única, basada en la elaboración artesanal de sushi con ingredientes frescos y de la más alta calidad.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="assets/img/tl.webp" alt="About Hero">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Close Banner -->
-
-    <!-- Start Section -->
-    <section class="container py-5 container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" >
-        <div class="row text-center pt-5 pb-3" >
-            <div class="col-lg-6 m-auto ">
-                <h1 class="h1 text-dark">Nuestros Servicios</h1>
-                <p class="text-dark">
-                    Tu sushi favorito, a tu alcance:
-                </p>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow ">
-                    <div class="h1 text-danger text-center"><i class="fa fa-truck fa-lg "></i></div>
-                    <h2 class="h5 mt-4 text-center"> Servicio de Delivery </h2>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-danger text-center"><i class="fas fa-exchange-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center"> Respuesta Inmediata </h2>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-danger text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center"> Promociones </h2>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-danger text-center"><i class="fa fa-user"></i></div>
-                    <h2 class="h5 mt-4 text-center"> 12 Horas al Día </h2>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End ACERCA DE Section -->
-
-
-
-    <!-- CONTACTANOS Section -->
-
-    <section class="container-fluid bg-light py-5" >
-
-        <!-- Start Content Page -->
-        <div class="container-fluid bg-light py-5">
-            <div class="col-md-6 m-auto text-center">
-                <h1 class="h1 text-white">Encuentranos aquí</h1>
-                <p class="text-white">
-                    Tu sushi favorito, a tu alcance:
-                </p>
-            </div>
-        </div>
-
-        <!-- Start Map -->
-        <div id="mapid" style="width: 100%; height: 300px;"></div>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script>
-            var mymap = L.map('mapid').setView([-17.782701, -63.182127], 16);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
-            }).addTo(mymap);
-
-            L.marker([-17.782701, -63.182127]).addTo(mymap)
-                .bindPopup("<b>SUSHIBAR </b> esta <br />Localizado en Santa Cruz, Bolivia.").openPopup();
-
-            mymap.scrollWheelZoom.disable();
-            mymap.touchZoom.disable();
-        </script>
-
-        <!-- Ena Map -->
-
-        <!-- Start Contact -->
-        <div class="container py-5">
-            <div class="row py-5">
-                <form class="col-md-9 m-auto" method="post" role="form">
-                    <div class="row">
-                        <div class="form-group col-md-6 mb-3 text-white">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nombre Completo">
-                        </div>
-                        <div class="form-group col-md-6 mb-3 text-white">
-                            <label for="email">Correo</label>
-                            <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo Electronico">
-                        </div>
-                    </div>
-                    <div class="mb-3 text-white" >
-                        <label for="subject">Asunto</label>
-                        <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Asunto">
-                    </div>
-                    <div class="mb-3 text-white">
-                        <label for="message">Mensaje</label>
-                        <textarea class="form-control mt-1" id="message" name="message" placeholder="Mensaje" rows="3"></textarea>
-                    </div>
-                    <div class="row text-white">
-                        <div class="col text-end mt-2">
-                            <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- End Contact -->
-    </section>
-
-
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-danger border-bottom pb-3 border-light logo">SUSHI BAR</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">+591 73564739</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">sushibar@gmail.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Sushi</a></li>
-                        <li><a class="text-decoration-none" href="#">Especialidades de la casa</a></li>
-                        <li><a class="text-decoration-none" href="#">Salsas Gourmet</a></li>
-                        <li><a class="text-decoration-none" href="#">Toppings</a></li>
-                        <li><a class="text-decoration-none" href="#">Gaseosas</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Más Información</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="about.html">Acerca de</a></li>
-                        <li><a class="text-decoration-none" href="contact.html">Donde nos encuentras</a></li>
-                        <li><a class="text-decoration-none" href="contact.html">Contactanos</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="row text-light mb-4">
-                <div class="col-12 mb-3">
-                    <div class="w-100 my-3 border-top border-light"></div>
-                </div>
-                <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons">
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <!--<div class="col-auto text-white">
-                    <label class="sr-only" for="subscribeEmail">Correo Electronico</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Correo Electronico">
-                        <div class="input-group-text btn-danger text-light">Suscribete</div>
-                    </div>
-                </div>-->
-            </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
+<!-- Banner Carousel Sushi -->
+<div id="template-mo-zay-hero-carousel" class="carousel slide custom-carousel-height" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active bg-danger"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1" class="bg-danger"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2" class="bg-danger"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
             <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            ProyectoSushi &copy; 2024 Beca Tecnologicas
-                            | SUSHIBAR por <a rel="sponsored" target="_blank"> Equipo Sushi </a>
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/Banner1.png" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left align-self-center">
+                            <h1 class="h1 text-danger"><b> Sushi a tu gusto, </b> ¡Personalízalo! </h1>
+                            <h3 class="h2 text-white"> Saborea la tradición japonesa con nuestro sushi artesanal. </h3>
+                            <p class="text-white">
+                                Disfruta del mejor sushi de la ciudad, elaborado con ingredientes frescos y de la más
+                                alta calidad. Te ofrecemos una amplia variedad de piezas para que encuentres tu
+                                favorita.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/salsaSoja.webp" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1 text-danger"><b> ¡Explosión de sabor! </b></h1>
+                            <h3 class="h2 text-white"> Convierte tu sushi en una experiencia culinaria sin igual con
+                                nuestras salsas gourmet. </h3>
+                            <p class="text-white">
+                                Dale un toque único a tu sushi con nuestras deliciosas salsas. Elige entre una amplia
+                                variedad de sabores: salsa de soja, teriyaki, mayonesa picante, sriracha, anguila, y
+                                muchas más. ¡Atrévete a probarlas todas!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/vasoDeGaseosa.png" alt="" width="450" height="450">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1 text-danger"><b> Gaseosas, </b> ¡el complemento perfecto para tu sushi! </h1>
+                            <h3 class="h2 text-white"> ¡Hidrátate con sabor! Prueba nuestras deliciosas gaseosas. </h3>
+                            <p class="text-white">
+                                Disfruta de una experiencia refrescante y deliciosa con nuestras gaseosas. Tenemos una
+                                amplia variedad de sabores para todos los gustos: cola, naranja, limón, manzana, fresa,
+                                y muchas más. ¡Encuentra tu favorita!
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+       role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left "></i>
+    </a>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+       role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+<!-- End Banner Hero -->
+
+
+<!-- Realizar el pedido Menu -->
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Realiza Tu Pedido</h1>
+            <p>
+                Tu Satisfacción en Cada Elección: Haz Tu Pedido y Disfruta de una Experiencia Culinaria Inigualable.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="#"><img src="./assets/img/sushi.jpg" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Sushi</h5>
+            <p class="text-center"><a class="btn btn-danger" href="shop.html">Ordenar</a></p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="#"><img src="./assets/img/topping5.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Toppings</h2>
+            <p class="text-center"><a class="btn btn-danger" href="shop.html">Ordenar</a></p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="#"><img src="./assets/img/gaseosas.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Gaseosas</h2>
+            <p class="text-center"><a class="btn btn-danger" href="shop.html">Ordenar</a></p>
+        </div>
+    </div>
+</section>
+<!-- End Categories of The Month -->
+
+
+<!-- Start Featured Product -->
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1 text-white">Nuestros Combos</h1>
+                <p class="text-white">
+                    Descubre la fusión perfecta de sabores con nuestros exclusivos combos:
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/comboSushi1.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li class="text-dark text-right">BOB 100</li>
+                        </ul>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-danger">Ututuysh</a>
+                        <p class="card-text">
+                            Entra a la familia este nuevo combo de 40 bocados x 6 sabores de California tempura, Salmón
+                            spicy, Langostino crispi, Camarón tamago, Kanikama Lulo y Salmón lion + 4 bastones de
+                            kanikama crunch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/comboSushi2.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li class="text-dark text-right">BOB 60</li>
+                        </ul>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-danger">Kashaki Hero</a>
+                        <p class="card-text">
+                            Ideal para una linda cena este combo de 20 bocados de sushi x 4 sabores diferentes:
+                            California, Alaska Kanikama, Maduro Mozzarella y New York, + entrada de dos deditos
+                            criollos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/comboSushi3.jpeg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li class="text-dark text-right">BOB 120</li>
+                        </ul>
+                        <a href=" shop-single.html" class="h2 text-decoration-none text-danger">Montonasho</a>
+                        <p class="card-text">
+                            Disfruta de 50 bocados de sushi x 5 sabores diferentes: Uramaki California, Salmón Kakiage,
+                            mango chips, salmon skin, camarón primavera + 2 Coca-Cola o Sprite de 1.5L + Helado.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<!-- End Featured Product -->
 
-    </footer>
-    <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- GALERIA SECCION -->
+
+<section>
+
+    <div class="gallary row" id="gallary">
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(3).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(6).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(10).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(50).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(11).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(53).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(21).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(48).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(26).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(28).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(55).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="./assets/img/sushi/sushii%20(45).jpg" alt="template by DevCRID http://www.devcrud.com/"
+                 class="gallary-img">
+            <a href="#" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- Acerca de -->
+
+<section id="about us" class="bg-danger py-5 d-flex">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-md-8 text-white">
+                <h1> Acerca de Nosotros </h1>
+                <p>
+                    Nació de la pasión de proyectoSushi por la cultura y la gastronomía japonesa. Nos hemos dedicado a
+                    ofrecer a nuestros clientes una experiencia culinaria única, basada en la elaboración artesanal de
+                    sushi con ingredientes frescos y de la más alta calidad.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="assets/img/tl.webp" alt="About Hero">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Close Banner -->
+
+<!-- Start Section -->
+<section id="servicios"
+         class="container py-5 container-fluid has-bg-overlay text-center text-light has-height-lg middle-items">
+    <div class="row text-center pt-5 pb-3">
+        <div class="col-lg-6 m-auto ">
+            <h1 class="h1 text-dark">Nuestros Servicios</h1>
+            <p class="text-dark">
+                Tu sushi favorito, a tu alcance:
+            </p>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow ">
+                <div class="h1 text-danger text-center"><i class="fa fa-truck fa-lg "></i></div>
+                <h2 class="h5 mt-4 text-center"> Servicio de Delivery </h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-danger text-center"><i class="fas fa-exchange-alt"></i></div>
+                <h2 class="h5 mt-4 text-center"> Respuesta Inmediata </h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-danger text-center"><i class="fa fa-percent"></i></div>
+                <h2 class="h5 mt-4 text-center"> Promociones </h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-danger text-center"><i class="fa fa-user"></i></div>
+                <h2 class="h5 mt-4 text-center"> 12 Horas al Día </h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End ACERCA DE Section -->
+
+
+<!-- CONTACTANOS Section -->
+
+<section class="container-fluid bg-light py-5">
+
+    <!-- Start Content Page -->
+    <div id="Contactanos" class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1 text-white">Encuentranos aquí</h1>
+            <p class="text-white">
+                Tu sushi favorito, a tu alcance:
+            </p>
+        </div>
+    </div>
+
+    <!-- Start Map -->
+    <div id="mapid" style="width: 100%; height: 300px;"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        AOS.init();
+        var mymap = L.map('mapid').setView([-17.782701, -63.182127], 16);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+        }).addTo(mymap);
+
+        L.marker([-17.782701, -63.182127]).addTo(mymap)
+            .bindPopup("<b>SUSHIBAR </b> esta <br />Localizado en Santa Cruz, Bolivia.").openPopup();
+
+        mymap.scrollWheelZoom.disable();
+        mymap.touchZoom.disable();
     </script>
-    <!-- End Script -->
+
+    <!-- Ena Map -->
+
+<!-- Start Contact -->
+<div class="container py-5">
+    <div class="row py-5">
+        <form class="col-md-9 m-auto" method="post" role="form">
+            <div class="row">
+                <div class="form-group col-md-6 mb-3 text-white">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group col-md-6 mb-3 text-white">
+                    <label for="email">Correo</label>
+                    <input type="email" class="form-control mt-1" id="email" name="email"
+                           placeholder="Correo Electronico">
+                </div>
+            </div>
+            <div class="mb-3 text-white">
+                <label for="subject">Asunto</label>
+                <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Asunto">
+            </div>
+            <div class="mb-3 text-white">
+                <label for="message">Mensaje</label>
+                <textarea class="form-control mt-1" id="message" name="message" placeholder="Mensaje"
+                          rows="3"></textarea>
+            </div>
+            <div class="row text-white">
+                <div class="col text-end mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End Contact -->
+</section>
+
+
+<!-- Start Footer -->
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-danger border-bottom pb-3 border-light logo">SUSHI BAR</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        123 Consectetur at ligula 10660
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="tel:010-020-0340">+591 73564739</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <a class="text-decoration-none" href="mailto:info@company.com">sushibar@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">Sushi</a></li>
+                    <li><a class="text-decoration-none" href="#">Especialidades de la casa</a></li>
+                    <li><a class="text-decoration-none" href="#">Salsas Gourmet</a></li>
+                    <li><a class="text-decoration-none" href="#">Toppings</a></li>
+                    <li><a class="text-decoration-none" href="#">Gaseosas</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Más Información</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
+                    <li><a class="text-decoration-none" href="about.html">Acerca de</a></li>
+                    <li><a class="text-decoration-none" href="contact.html">Donde nos encuentras</a></li>
+                    <li><a class="text-decoration-none" href="contact.html">Contactanos</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row text-light mb-4">
+            <div class="col-12 mb-3">
+                <div class="w-100 my-3 border-top border-light"></div>
+            </div>
+            <div class="col-auto me-auto">
+                <ul class="list-inline text-left footer-icons">
+                    <li class="list-inline-item border border-light rounded-circle text-center">
+                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                                class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                    </li>
+                    <li class="list-inline-item border border-light rounded-circle text-center">
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i
+                                class="fab fa-instagram fa-lg fa-fw"></i></a>
+                    </li>
+                    <li class="list-inline-item border border-light rounded-circle text-center">
+                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                                class="fab fa-twitter fa-lg fa-fw"></i></a>
+                    </li>
+                    <li class="list-inline-item border border-light rounded-circle text-center">
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i
+                                class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        ProyectoSushi &copy; 2024 Beca Tecnologicas
+                        | SUSHIBAR por <a rel="sponsored" target="_blank"> Equipo Sushi </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- End Footer -->
+
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<!-- End Script -->
 </body>
 
 </html>
